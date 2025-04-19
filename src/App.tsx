@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'; // Add hooks
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './components/Home'; // Import the new Home component
 import About from './components/About';
@@ -23,6 +23,7 @@ const konamiCode = [
 function App() {
   const [isSnakeVisible, setIsSnakeVisible] = useState(false);
   const [keySequence, setKeySequence] = useState<string[]>([]);
+  const location = useLocation(); // Get current location
 
   const handleKonamiCode = useCallback((event: KeyboardEvent) => {
     // Append the pressed key to the sequence
@@ -57,9 +58,8 @@ function App() {
   };
 
   return (
-    <>
+    <div className="app-container">
       <Header />
-      {/* Use a wrapper div that corresponds to the old <main> tag for styling */}
       <main className="app-main"> 
         <Routes>
           <Route path="/" element={<Home />} />
@@ -72,11 +72,19 @@ function App() {
           {/* <Route path="*" element={<div>Page Not Found</div>} /> */}
         </Routes>
       </main>
+
+      {/* Conditionally render hint based on path, outside main */} 
+      {location.pathname === '/experience' && (
+        <p className="easter-egg-hint app-level-hint">
+          P.S. What happens if you press ↑ ↑ ↓ ↓ ← → ← → B A?
+        </p>
+      )}
+
       <Footer />
 
       {/* Conditionally render the Snake game overlay */}
       {isSnakeVisible && <SnakeGame onClose={hideSnakeGame} />}
-    </>
+    </div>
   );
 }
 

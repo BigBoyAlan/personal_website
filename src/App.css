@@ -80,16 +80,24 @@ nav ul li a:hover::after {
     width: 100%;
 }
 
-/* Main layout container */
+/* Layout wrapper for the entire app */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure container takes full viewport height */
+}
+
+/* Adjust app-main to allow footer to be pushed down */
 .app-main {
+    flex-grow: 1; /* Allow main content to grow and push footer */
     width: 90%;
     margin: 20px auto; /* Add margin */
     background: var(--container-bg);
     padding: 30px 5%;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0,0,0,0.07);
-    min-height: 70vh;
-    /* Add a subtle fade-in for the main content area */
+    /* Remove min-height from here if footer needs to be pushed reliably */
+    /* min-height: 70vh; */
     opacity: 0;
     animation: fadeInMain 0.6s ease-out forwards;
 }
@@ -184,20 +192,31 @@ h3 {
     transform: translateY(-3px);
 }
 
+/* Adjust footer margin */
 footer {
     text-align: center;
-    margin: 40px auto 20px auto; /* Adjust margins */
-    padding-top: 20px;
+    /* margin: 40px auto 20px auto; Let flexbox handle spacing */
+    padding: 20px 0; /* Adjust padding */
+    margin-top: auto; /* Pushes footer down in flex container */
     border-top: 1px solid #ccc;
     color: #666;
-    width: 90%; /* Match main width */
+    width: 100%; /* Footer spans full width */
+    background-color: var(--background-color); /* Match body background potentially */
 }
 
-/* Styling for the easter egg hint */
-.easter-egg-hint {
-    font-size: 0.8rem; /* Smaller font size */
-    color: var(--secondary-color, #aaa); /* Lighter grey color */
-    text-align: center; /* Center the hint */
-    margin-top: 30px; /* Add some space above it */
-    opacity: 0.7; /* Make it slightly transparent */
+/* Styling for the easter egg hint (now outside main) */
+.easter-egg-hint.app-level-hint {
+    font-size: 0.8rem;
+    color: var(--secondary-color, #aaa);
+    text-align: center;
+    padding: 10px 0; /* Add some padding */
+    margin: 0 auto; /* Center block */
+    width: 90%; /* Match main content width */
+    opacity: 0.7;
+    /* Footer has margin-top: auto, so hint will sit just above it */
 }
+
+/* Remove old hint styling if it conflicts */
+/*
+.easter-egg-hint { ... }
+*/

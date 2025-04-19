@@ -13,10 +13,7 @@ const Experience: React.FC = () => {
       </div>
       {/* Add previous roles if desired */}
 
-      {/* Subtle hint for the easter egg */}
-      <p className="easter-egg-hint">
-        P.S. Old-school gamers might find a familiar sequence rewarding...
-      </p>
+      {/* Hint removed, will be handled in App.tsx */}
     </section>
   );
 };
