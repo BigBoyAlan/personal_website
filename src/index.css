@@ -1,0 +1,68 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  /* color: rgba(255, 255, 255, 0.87); */ /* Let App.css handle colors */
+  /* background-color: #242424; */ /* Let App.css handle background */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove max-width and padding from #root if they exist */
+#root {
+  /* max-width: 1280px; */ /* REMOVE this if present */
+  /* padding: 2rem; */ /* REMOVE this if present */
+  margin: 0 auto;
+  text-align: inherit; /* Inherit text-align instead of centering everything */
+  width: 100%; /* Ensure root takes full available width */
+}
+
+a {
+  font-weight: 500;
+  /* color: #646cff; */ /* Let App.css handle link colors */
+  text-decoration: inherit;
+}
+/* Remove link hover color if it exists */
+/* a:hover { */
+  /* color: #535bf2; */
+/* } */
+
+body {
+  margin: 0;
+  /* Remove flex centering */
+  /* display: flex; */
+  /* place-items: center; */
+  min-width: 320px;
+  min-height: 100vh;
+  /* Ensure body allows content to flow from top */
+  display: block; /* Or remove display property entirely */
+}
+
+/* Remove default h1 styles if they conflict */
+/* h1 { */
+  /* font-size: 3.2em; */
+  /* line-height: 1.1; */
+/* } */
+
+/* Remove default button styles if they conflict */
+/* button { ... } */
+
+/* Keep dark mode styles if desired, but ensure they don't override layout */
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Adjust light theme defaults if needed, but avoid layout constraints */
+    /* color: #213547; */
+    /* background-color: #ffffff; */
+  }
+  /* a:hover { */
+    /* color: #747bff; */
+  /* } */
+  /* button { */
+    /* background-color: #f9f9f9; */
+  /* } */
+}
