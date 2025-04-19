@@ -1,16 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
   font-weight: 400;
 
-  color-scheme: light dark;
-  /* color: rgba(255, 255, 255, 0.87); */ /* Let App.css handle colors */
-  /* background-color: #242424; */ /* Let App.css handle background */
+  /* Define base colors inspired by example */
+  --color-text-primary: #1a202c; /* Dark grey/black */
+  --color-text-secondary: #4a5568; /* Medium grey */
+  --color-background: #f7fafc; /* Very light grey/off-white */
+  --color-primary-accent: #38b2ac; /* Teal/green accent */
+  --color-secondary-background: #1a202c; /* Dark background for footer/sections */
+  --color-card-border: #e2e8f0; /* Light border for cards */
+
+  color-scheme: light;
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Apply smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
 /* Remove max-width and padding from #root if they exist */
@@ -24,13 +39,13 @@
 
 a {
   font-weight: 500;
-  /* color: #646cff; */ /* Let App.css handle link colors */
+  color: var(--color-primary-accent);
   text-decoration: inherit;
+  transition: color 0.2s ease;
 }
-/* Remove link hover color if it exists */
-/* a:hover { */
-  /* color: #535bf2; */
-/* } */
+a:hover {
+   color: #2d9a94; /* Darker teal */
+}
 
 body {
   margin: 0;
@@ -43,26 +58,27 @@ body {
   display: block; /* Or remove display property entirely */
 }
 
-/* Remove default h1 styles if they conflict */
-/* h1 { */
-  /* font-size: 3.2em; */
-  /* line-height: 1.1; */
-/* } */
-
-/* Remove default button styles if they conflict */
-/* button { ... } */
-
-/* Keep dark mode styles if desired, but ensure they don't override layout */
-@media (prefers-color-scheme: light) {
-  :root {
-    /* Adjust light theme defaults if needed, but avoid layout constraints */
-    /* color: #213547; */
-    /* background-color: #ffffff; */
-  }
-  /* a:hover { */
-    /* color: #747bff; */
-  /* } */
-  /* button { */
-    /* background-color: #f9f9f9; */
-  /* } */
+/* Remove browser default margins from common elements */
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin: 0;
+    padding: 0;
 }
+
+/* Base list styling */
+ul, ol {
+    list-style: none;
+}
+
+/* Remove default button styles */
+button {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Remove default styles from Vite template */
+/* @media (prefers-color-scheme: light) { ... } */

@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'; // Add hooks
-import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
-import Home from './components/Home'; // Import the new Home component
+import Hero from './components/Hero'; // Re-import or create a new Hero
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
@@ -23,7 +22,6 @@ const konamiCode = [
 function App() {
   const [isSnakeVisible, setIsSnakeVisible] = useState(false);
   const [keySequence, setKeySequence] = useState<string[]>([]);
-  const location = useLocation(); // Get current location
 
   const handleKonamiCode = useCallback((event: KeyboardEvent) => {
     // Append the pressed key to the sequence
@@ -60,25 +58,18 @@ function App() {
   return (
     <div className="app-container">
       <Header />
-      <main className="app-main"> 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/contact" element={<Contact />} />
-          {/* Optional: Add a catch-all route for 404 pages */}
-          {/* <Route path="*" element={<div>Page Not Found</div>} /> */}
-        </Routes>
-      </main>
+      {/* Render components sequentially */}
+      <Hero /> 
+      <About />
+      <Skills />
+      <Projects />
+      <Experience /> 
+      <Contact />
 
-      {/* Conditionally render hint based on path, outside main */} 
-      {location.pathname === '/experience' && (
-        <p className="easter-egg-hint app-level-hint">
-          P.S. What happens if you press ↑ ↑ ↓ ↓ ← → ← → B A?
-        </p>
-      )}
+      {/* Easter egg hint (can be moved/restyled later) */}
+      <p className="easter-egg-hint app-level-hint">
+         P.S. What happens if you press ↑ ↑ ↓ ↓ ← → ← → B A?
+      </p>
 
       <Footer />
 

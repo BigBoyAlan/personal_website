@@ -1,222 +1,357 @@
 /* App.css */
-:root {
-    /* Updated Palette */
-    --primary-color: #2c3e50; /* Darker, slightly desaturated blue/grey */
-    --secondary-color: #7f8c8d; /* Greyish tone for subtitles */
-    --background-color: #ecf0f1; /* Very light grey background */
-    --container-bg: #ffffff; /* White for content containers */
-    --accent-color-1: #3498db; /* Brighter, cleaner blue */
-    --accent-color-1-hover: #2980b9; /* Darker blue for hover */
-    --accent-color-2: #1abc9c; /* Teal accent */
-    --border-color: #e0e0e0; /* Slightly softer border */
-    --card-bg: #fdfdfd; /* Almost white card background */
+
+/* Global container for layout */
+.app-container {
+  /* Keep flex column for footer push */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* General Section Styling */
+section {
+  padding: 60px 0; /* Vertical padding */
+  width: 100%;
 }
 
-/* Global styles */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
-    color: var(--primary-color);
-    background-color: var(--background-color);
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+/* Container to center content within sections */
+.container {
+  max-width: 1100px; /* Adjust max-width as needed */
+  margin: 0 auto;
+  padding: 0 20px; /* Horizontal padding */
 }
 
-/* Component Styles */
-
-header {
-    background: var(--primary-color);
-    color: var(--container-bg);
-    padding: 1rem 0;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+/* Alternate background colors for sections (example) */
+#about, #projects, #contact {
+  background-color: var(--color-background); /* Light */
 }
 
-nav ul {
-    list-style: none;
-    text-align: center;
-    padding-left: 0;
+#skills, #experience {
+  background-color: #e2e8f0; /* Slightly darker grey */
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
+/* Section Heading Styles */
+h2 {
+    font-size: 2.5rem; /* Larger section headings */
+    margin-bottom: 30px;
+    color: var(--color-text-primary);
+    text-align: center; /* Center headings */
 }
 
-nav ul li a {
-    color: var(--container-bg);
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.2s ease-in-out;
-    position: relative; /* For potential underline animation */
-    padding-bottom: 5px; /* Space for underline */
+h3 {
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
-nav ul li a:hover {
-    color: var(--accent-color-1);
-    text-decoration: none; /* Remove default underline */
+/* --- Component Specific Styles --- */
+
+/* Header.css (or integrated here) */
+.site-header {
+  background-color: var(--color-background); /* Match body bg */
+  padding: 15px 0;
+  border-bottom: 1px solid var(--color-card-border);
+  position: sticky; /* Make header sticky */
+  top: 0;
+  z-index: 100;
+  width: 100%;
 }
 
-/* Optional: Underline animation on hover */
-nav ul li a::after {
+.header-container {
+  max-width: 1200px; /* Wider container for header */
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  border: 2px solid var(--color-text-primary);
+  padding: 5px 10px;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.main-nav li {
+  margin-left: 25px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.main-nav a:hover {
+  color: var(--color-primary-accent);
+}
+
+.main-nav a::after {
     content: '';
     position: absolute;
     width: 0;
     height: 2px;
     bottom: 0;
-    left: 50%;
-    background-color: var(--accent-color-1);
-    transition: all 0.3s ease-out;
-    transform: translateX(-50%);
+    left: 0;
+    background-color: var(--color-primary-accent);
+    transition: width 0.3s ease-out;
 }
 
-nav ul li a:hover::after {
+.main-nav a:hover::after {
     width: 100%;
 }
 
-/* Layout wrapper for the entire app */
-.app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensure container takes full viewport height */
+.contact-button {
+  display: inline-block;
+  padding: 8px 20px;
+  border: 1px solid var(--color-text-primary);
+  border-radius: 4px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Adjust app-main to allow footer to be pushed down */
-.app-main {
-    flex-grow: 1; /* Allow main content to grow and push footer */
-    width: 90%;
-    margin: 20px auto; /* Add margin */
-    background: var(--container-bg);
-    padding: 30px 5%;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.07);
-    /* Remove min-height from here if footer needs to be pushed reliably */
-    /* min-height: 70vh; */
-    opacity: 0;
-    animation: fadeInMain 0.6s ease-out forwards;
+.contact-button:hover {
+  background-color: var(--color-text-primary);
+  color: var(--color-background);
 }
 
-@keyframes fadeInMain {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Hero.css (or integrated here) */
+.hero-section {
+  background-color: var(--color-background);
+  padding: 80px 0; /* More padding for hero */
+  text-align: center;
 }
 
-/* Styles for sections within .app-main */
-/* Target direct child sections to ensure they fill the container */
-.app-main > section {
-    width: 100%; /* Explicitly set width */
-    margin-bottom: 40px; /* Increase spacing */
-    padding-bottom: 30px; /* Increase padding */
-    border-bottom: 1px solid var(--border-color);
-    /* Add animation for section loading */
-    opacity: 0;
-    animation: fadeInSection 0.5s ease-out forwards;
-    animation-delay: 0.2s; /* Stagger animation slightly */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@keyframes fadeInSection {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+.profile-picture {
+  width: 180px; /* Adjust size */
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 30px;
+  border: 5px solid var(--color-primary-accent);
 }
 
-.app-main section:last-of-type {
-    border-bottom: none;
-    margin-bottom: 0;
+.hero-content .intro-text {
+  max-width: 650px; /* Limit text width */
+  margin: 0 auto;
 }
 
-h1, h2, h3 {
-    margin-bottom: 15px;
-    color: var(--primary-color);
+.hero-content .intro-text p {
+  font-size: 1.5rem; /* Larger intro text */
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: 15px;
 }
 
-h1 {
-    text-align: center;
-    font-size: 2.5em;
-    font-weight: 600;
-}
-
-h2 {
-    font-size: 1.8em;
-    color: var(--secondary-color);
-    padding-bottom: 5px;
-    border-bottom: 2px solid var(--accent-color-1); /* Accent underline for H2 */
-    display: inline-block; /* Make border fit content */
-}
-
-h3 {
-  font-size: 1.3em;
-  color: var(--primary-color);
+.hero-content .intro-text .name-highlight {
+  color: var(--color-primary-accent);
   font-weight: 600;
 }
 
-/* Remove Hero styles if Hero component isn't used standalone */
-/* #hero { ... } */
-/* #hero p { ... } */
-
-#skills ul {
-    list-style: none; /* Remove default bullets */
-    padding-left: 0;
+/* Styles for Identities */
+.hero-content .identities {
+    margin-top: 20px;
+    font-size: 1.1rem; /* Adjust size */
+    color: var(--color-text-secondary);
+    font-weight: 400;
 }
 
-#skills li {
-    background-color: var(--card-bg);
-    margin-bottom: 8px;
-    padding: 8px 12px;
-    border-radius: 4px;
-    border-left: 3px solid var(--accent-color-2);
-    transition: background-color 0.2s ease, border-left-color 0.2s ease;
+.hero-content .identities .separator {
+    margin: 0 10px; /* Space around pipes */
+    color: var(--color-card-border); /* Lighter color for separator */
 }
 
-#skills li:hover {
-    background-color: #e9ecef;
-    border-left-color: var(--accent-color-1);
+/* Skills Section */
+#skills .container {
+  /* Add specific container styles if needed */
+}
+
+#skills h2 {
+  /* Styles already defined generally */
+}
+
+/* Re-add grid styles for skills list */
+#skills .skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust minmax as needed */
+    gap: 20px;
+    margin-top: 40px;
+}
+
+/* Re-add styles for individual skill items */
+#skills .skill-item {
+    background-color: var(--color-background); /* Match card background */
+    padding: 15px 20px; /* Adjust padding */
+    border-radius: 6px;
+    border: 1px solid var(--color-card-border);
+    border-left: 4px solid var(--color-primary-accent); /* Keep accent border */
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#skills .skill-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Projects Section (Card Layout) */
+#projects .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    align-items: start; /* Align items to the top of their row */
 }
 
 .project-card {
-    background: var(--card-bg);
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid var(--border-color);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-card-border);
+  border-radius: 8px; /* Slightly larger radius */
+  padding: 25px;
+  display: flex; /* Use flexbox for icon/text layout */
+  align-items: flex-start; /* Align items to the top */
+  gap: 20px; /* Space between icon and text */
+  overflow: hidden; /* Needed for description transition */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .project-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transform: translateY(-3px);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
-/* Adjust footer margin */
+/* Icon Container/Styles */
+.project-icon-container {
+  flex-shrink: 0; /* Prevent icon container from shrinking */
+}
+
+.project-icon {
+  width: 60px; /* Increased size */
+  height: 60px;
+  display: block;
+  /* Remove margin-bottom if controlled by flex gap */
+}
+
+/* Text Content Container */
+.project-text-content {
+  flex-grow: 1; /* Allow text content to take remaining space */
+}
+
+.project-text-content h3 {
+  margin-bottom: 8px; /* Adjust spacing */
+  margin-top: 0; /* Remove potential top margin */
+  line-height: 1.3;
+}
+
+/* Description - Hidden by default, shown on hover */
+.project-description {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, opacity 0.3s ease-in; /* Smooth transition */
+  margin-top: 5px; /* Space between title and description */
+}
+
+.project-card:hover .project-description {
+  max-height: 150px; /* Adjust based on expected description length */
+  opacity: 1;
+}
+
+.project-description p {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem; /* Slightly smaller description text */
+  line-height: 1.5;
+}
+
+/* Experience Section */
+#experience .experience-item {
+    background-color: var(--color-background);
+    padding: 25px;
+    border-radius: 6px;
+    border-left: 4px solid var(--color-primary-accent);
+    margin-bottom: 20px;
+    max-width: 800px; /* Limit width */
+    margin-left: auto;
+    margin-right: auto;
+}
+#experience .experience-item h3 {
+    margin-bottom: 5px;
+}
+#experience .experience-item p em {
+    color: var(--color-text-secondary);
+    font-style: normal;
+    display: block;
+    margin-bottom: 10px;
+}
+#experience .experience-item p {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+}
+
+/* Contact Section */
+#contact .container {
+    max-width: 700px;
+    text-align: center;
+}
+#contact p {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 25px;
+}
+/* Add styles for contact links/form */
+#contact a {
+    display: inline-block;
+    margin: 0 10px;
+    /* Add more styling */
+}
+
+/* Footer */
 footer {
-    text-align: center;
-    /* margin: 40px auto 20px auto; Let flexbox handle spacing */
-    padding: 20px 0; /* Adjust padding */
-    margin-top: auto; /* Pushes footer down in flex container */
-    border-top: 1px solid #ccc;
-    color: #666;
-    width: 100%; /* Footer spans full width */
-    background-color: var(--background-color); /* Match body background potentially */
+  background-color: var(--color-secondary-background);
+  color: #a0aec0; /* Lighter grey for dark background */
+  text-align: center;
+  padding: 30px 0;
+  margin-top: auto; /* Keep pushing down */
+  width: 100%;
+}
+footer p {
+    font-size: 0.9rem;
 }
 
-/* Styling for the easter egg hint (now outside main) */
+/* Easter Egg Hint */
 .easter-egg-hint.app-level-hint {
-    font-size: 0.8rem;
-    color: var(--secondary-color, #aaa);
-    text-align: center;
-    padding: 10px 0; /* Add some padding */
-    margin: 0 auto; /* Center block */
-    width: 90%; /* Match main content width */
-    opacity: 0.7;
-    /* Footer has margin-top: auto, so hint will sit just above it */
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 20px 0;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 700px;
+  opacity: 0.8;
+  background-color: var(--color-background); /* Match section background */
 }
 
-/* Remove old hint styling if it conflicts */
-/*
-.easter-egg-hint { ... }
-*/
+/* Remove old layout styles */
+/* .app-main { ... } */
+/* .app-main > section { ... } */
+/* Old .easter-egg-hint styles */
